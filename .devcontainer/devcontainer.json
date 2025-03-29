@@ -1,0 +1,33 @@
+{
+  "name": "mimisight Expo",
+  "build": {
+    "dockerfile": "./Dockerfile"
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "upgradePackages": false,
+      "username": "node",
+      "userUid": "automatic",
+      "userGid": "automatic"
+    }
+  },
+  "containerEnv": {
+    "TZ": "Asia/Tokyo"
+  },
+  "postStartCommand": "cd app && pnpm i",
+  "forwardPorts": [8081],
+  "remoteUser": "node",
+  "runArgs": [
+    "-p=8081:8081",
+    "--env-file",
+    ".devcontainer/.env"
+  ],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "biomejs.biome",
+        "expo.vscode-expo-tools"
+      ]
+    }
+  }
+}

@@ -1,9 +1,21 @@
-#
+# MimiSight
 
-## About
+![Licence](https://img.shields.io/github/license/rmuraix/mimisight)
 
-## Usage
+## 実行方法
 
-## Contributing
+### アプリ
 
-Your contribution is always welcome. Please read [Contributing Guide](https://github.com/rmuraix/.github/blob/main/.github/CONTRIBUTING.md).
+```bash
+cd app
+pnpm install
+pnpm start
+```
+
+Devcontainerを使用をする場合は`.devcontainer/.env`を作成します。
+
+```bash
+REACT_NATIVE_PACKAGER_HOSTNAME=192.168.XXX.XXX # マシンのIPアドレス
+```
+
+表示されたQRコードを**Expo Go**で読み取ってください。
