@@ -32,6 +32,7 @@ jobs:
           cache-dependency-path: app/pnpm-lock.yaml
       - name: Setup EAS
         uses: expo/expo-github-action@v8
+        if: ${{ github.event.pull_request.head.repo.full_name == github.repository }} # ForkからのPRは無視
         with:
           eas-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
@@ -42,4 +43,5 @@ jobs:
       - name: Run test
         run: pnpm jest
       - name: build
+        if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
         run: eas build --platform android --local --non-interactive
