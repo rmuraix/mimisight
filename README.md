@@ -19,3 +19,7 @@ REACT_NATIVE_PACKAGER_HOSTNAME=192.168.XXX.XXX # マシンのIPアドレス
 ```
 
 表示されたQRコードを**Expo Go**で読み取ってください。
+
+## アーキテクチャ
+
+![Arch](./docs/assets/architecture.drawio.svg)
