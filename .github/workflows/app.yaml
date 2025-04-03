@@ -42,6 +42,6 @@ jobs:
         run: pnpm biome
       - name: Run test
         run: pnpm jest
-      - name: build
+      - name: Build
         if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
         run: eas build --platform android --local --non-interactive
