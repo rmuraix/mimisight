@@ -1,36 +1,29 @@
-import { Link } from "expo-router";
-import { StyleSheet, TouchableOpacity } from "react-native";
+import { CameraView, useCameraPermissions } from "expo-camera";
+import { Button, StyleSheet, Text, View } from "react-native";
 
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView as View } from "@/components/ThemedView";
-import { Colors } from "@/constants/Colors";
+export default function App() {
+  const [permission, requestPermission] = useCameraPermissions();
 
-export default function TabOneScreen() {
+  if (!permission) {
+    // カメラパーミッションがロード中
+    return <View />;
+  }
+
+  if (!permission.granted) {
+    // カメラ許可がまだない場合に許可のためのUI要素などを出す
+    return (
+      <View style={styles.container}>
+        <Text style={styles.message}>
+          We need your permission to show the camera
+        </Text>
+        <Button onPress={requestPermission} title="grant permission" />
+      </View>
+    );
+  }
+
   return (
     <View style={styles.container}>
-      <ThemedText style={styles.title}>MimiSight</ThemedText>
-
-      <View
-        style={styles.separator}
-        lightColor="#eee"
-        darkColor="rgba(255,255,255,0.1)"
-      />
-
-      <Link href="/camera" asChild>
-        <TouchableOpacity style={styles.cameraButton}>
-          <ThemedText style={styles.cameraButtonText}>
-            カメラで認識を開始
-          </ThemedText>
-        </TouchableOpacity>
-      </Link>
-
-      <View style={styles.infoContainer}>
-        <ThemedText style={styles.infoText}>
-          このアプリはカメラで捉えた映像を認識し、視覚情報を音声で説明します。
-          {"\n\n"}
-          現在はデモ版です。後ほどサーバーと連携して実際の認識機能が追加される予定です。
-        </ThemedText>
-      </View>
+      <CameraView style={styles.camera} facing="back" />
     </View>
   );
 }
@@ -38,37 +31,23 @@ export default function TabOneScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
     justifyContent: "center",
-    padding: 20,
   },
-  title: {
-    fontSize: 28,
-    fontWeight: "bold",
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: "80%",
-  },
-  cameraButton: {
-    backgroundColor: Colors.light.tint,
-    paddingHorizontal: 20,
-    paddingVertical: 15,
-    borderRadius: 10,
-    marginVertical: 20,
-  },
-  cameraButtonText: {
-    color: "white",
-    fontSize: 18,
-    fontWeight: "bold",
-  },
-  infoContainer: {
-    marginTop: 20,
-    paddingHorizontal: 20,
-  },
-  infoText: {
+  message: {
     textAlign: "center",
-    lineHeight: 24,
+    paddingBottom: 10,
+  },
+  camera: {
+    flex: 1,
+  },
+  button: {
+    flex: 1,
+    alignSelf: "flex-end",
+    alignItems: "center",
+  },
+  text: {
+    fontSize: 24,
+    fontWeight: "bold",
+    color: "white",
   },
 });
