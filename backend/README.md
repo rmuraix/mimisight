@@ -5,7 +5,7 @@ uv + FastAPI + Dockerの構成
 ## 開発サーバーの起動方法
 
 ```bash
-docker compoe up
+docker compose up
 ```
 
 ## 本番環境の起動
