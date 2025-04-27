@@ -23,4 +23,4 @@ COPY --from=builder --chown=app:app /app /app
 
 ENV PATH="/app/.venv/bin:$PATH"
 
-CMD ["uvicorn", "app.src.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["sh", "-c", "uvicorn app.src.main:app --host 0.0.0.0 --port ${PORT:-8000}"]
