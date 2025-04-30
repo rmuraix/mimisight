@@ -1,0 +1,35 @@
+name: Backend
+on:
+    push:
+      branches: [main]
+      paths:
+        - 'backend/**'
+        - '.github/workflows/backend.yaml'
+    pull_request:
+      branches: [main]
+      paths:
+        - 'backend/**'
+        - '.github/workflows/backend.yaml'  
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version-file: "${{ github.workspace }}/backend/.python-version"
+      - name: Install packages
+        run: uv sync
+      - name: Run Ruff
+        run: uv run ruff check --output-format=github .
+      - name: Run Ruff format
+        run: uv run ruff format --check .
+      - name: Run mypy
+        run: uv run mypy .
