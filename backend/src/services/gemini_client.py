@@ -5,6 +5,18 @@ from google.genai.types import HttpOptions, LiveConnectConfig, Modality
 
 
 class GeminiSession:
+    """
+    GeminiSession manages a connection to the Gemini AI service using the genai client.
+
+    Methods:
+        __init__():
+            Geminiセッションを初期化
+
+        start_session():
+            ライブセッションを開始し、Geminiモデルと接続
+            Returns:
+                Geminiモデルと対話するための非同期接続オブジェクト
+    """
     def __init__(self):
         self.client = genai.Client(http_options=HttpOptions(api_version="v1beta1"))
 
