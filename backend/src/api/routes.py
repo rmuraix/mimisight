@@ -47,7 +47,7 @@ async def websocket_endpoint(websocket: WebSocket):
 
                     blob = Blob(data=audio_bytes, mime_type=audio.mime_type)
                     await session.send_realtime_input(media=blob)
-                
+
                 else:
                     await websocket.send_json({"error": "Invalid message format"})
 

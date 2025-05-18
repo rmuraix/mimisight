@@ -17,6 +17,7 @@ class GeminiSession:
             Returns:
                 Geminiモデルと対話するための非同期接続オブジェクト
     """
+
     def __init__(self):
         self.client = genai.Client(http_options=HttpOptions(api_version="v1beta1"))
 
