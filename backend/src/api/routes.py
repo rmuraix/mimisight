@@ -55,6 +55,10 @@ async def websocket_endpoint(websocket: WebSocket):
             receive_task.cancel()
             await session.close()
 
+        finally:
+            receive_task.cancel()
+            await session.close()
+
 
 async def receive_response(session, websocket: WebSocket):
     async for response in session.receive():
