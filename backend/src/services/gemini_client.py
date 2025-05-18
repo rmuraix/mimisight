@@ -11,6 +11,6 @@ class GeminiSession:
     def start_session(self):
         config = LiveConnectConfig(response_modalities=[Modality.AUDIO])
         return self.client.aio.live.connect(
-            model=os.getenv("MODEL", "gemini-2.0-flash-live-preview-04-09"),
+            model=os.getenv("MODEL_NAME", "gemini-2.0-flash-live-preview-04-09"),
             config=config,
         )
