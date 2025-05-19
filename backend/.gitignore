@@ -178,3 +178,8 @@ pyrightconfig.json
 
 # Google Cloud
 cloudbuild.yaml
+credentials/
+
+# For input tests
+*.wav
+*.jpg
