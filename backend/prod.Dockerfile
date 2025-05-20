@@ -22,5 +22,6 @@ COPY --from=builder --chown=python:python /python /python
 COPY --from=builder --chown=app:app /app /app
 
 ENV PATH="/app/.venv/bin:$PATH"
+ENV PYTHONPATH=/app
 
-CMD ["sh", "-c", "uvicorn app.src.main:app --host 0.0.0.0 --port ${PORT:-8000}"]
+CMD ["sh", "-c", "uvicorn app.src.main:app --host 0.0.0.0 --port ${PORT:-8000}", "--loop", "asyncio"]
