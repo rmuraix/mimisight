@@ -1,0 +1,19 @@
+name: mimisight
+description: A new Flutter project.
+
+environment:
+  sdk: '^3.8.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_test:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  camera: ^0.11.0+1
+  flutter_lints: ^2.0.1
+  flutter_haptic_feedback: ^1.0.1
+  provider: ^6.0.0
+  web_socket_channel: ^2.0.0
+  path_provider: ^2.0.0
+  go_router: ^14.2.0
