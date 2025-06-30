@@ -8,9 +8,13 @@
 
 ```bash
 cd app
-pnpm install
-pnpm start
+flutter pub get
+flutter run
 ```
+### VSCode
+- 実行とデバック ` ctrl + shift + D`
+- デバックの種類: ` Dart and Flutter`に変更
+- デバックの実行
 
 Devcontainerを使用をする場合は`.devcontainer/.env`を作成します。
 
